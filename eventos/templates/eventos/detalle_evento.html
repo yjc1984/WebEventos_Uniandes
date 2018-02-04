@@ -2,16 +2,19 @@
 
 {% block content %}
     <div class="evento">
-      <a class="btn btn-default" href="{% url 'editar_evento' pk=evento.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-
-        <h1>{{ evento.nombre}}</h1>
-        <p> Fecha de creación: {{ evento.fecha_creacion }}</p>
-        <p> Categoría: {{ evento.categoria|linebreaksbr }}</p>
-        <p> Lugar: {{ evento.lugar|linebreaksbr }}</p>
-        <p> Dirección: {{ evento.direccion|linebreaksbr }}</p>
-        <p> Fecha Inicio: {{ evento.fecha_inicio|linebreaksbr }}</p>
-        <p> Fecha Fin: {{ evento.fecha_fin|linebreaksbr }}</p>
-        <p> Tipo Evento: {{ evento.tipo_evento|linebreaksbr }}</p>
+      <div class="date">
+        <a class="btn btn-default" href="{% url 'editar_evento' pk=evento.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="btn btn-default" href="{% url 'eliminar_evento' pk=evento.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+      </div>
+      
+      <h1>{{ evento.nombre}}</h1>
+      <p> Fecha de creación: {{ evento.fecha_creacion }}</p>
+      <p> Categoría: {{ evento.categoria|linebreaksbr }}</p>
+      <p> Lugar: {{ evento.lugar|linebreaksbr }}</p>
+      <p> Dirección: {{ evento.direccion|linebreaksbr }}</p>
+      <p> Fecha Inicio: {{ evento.fecha_inicio|linebreaksbr }}</p>
+      <p> Fecha Fin: {{ evento.fecha_fin|linebreaksbr }}</p>
+      <p> Tipo Evento: {{ evento.tipo_evento|linebreaksbr }}</p>
 
     </div>
 {% endblock %}
