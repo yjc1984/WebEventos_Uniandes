@@ -12,6 +12,7 @@ class Evento(models.Model):
     direccion = models.CharField(max_length=200)
     fecha_inicio = models.DateTimeField(default=timezone.now)
     fecha_fin = models.DateTimeField(blank=True, null=True)
+    fecha_creacion = models.DateTimeField(default=timezone.now)
     autor = models.ForeignKey(User,on_delete=models.CASCADE)
 
     # Diferentes Categorias

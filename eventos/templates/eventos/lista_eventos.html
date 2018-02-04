@@ -7,16 +7,17 @@
             <h1><a href="">Eventos</a></h1>
         </div>
 
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </div>
+        {% for evento in eventos %}
+            <div>
+                <p> Fecha de creación: {{ evento.fecha_creacion }}</p>
+                <h1><a href="">{{ evento.nombre }}</a></h1>
+                <p> Categoría: {{ evento.categoria|linebreaksbr }}</p>
+                <p> Lugar: {{ evento.lugar|linebreaksbr }}</p>
+                <p> Dirección: {{ evento.direccion|linebreaksbr }}</p>
+                <p> Fecha Inicio: {{ evento.fecha_inicio|linebreaksbr }}</p>
+                <p> Fecha Fin: {{ evento.fecha_fin|linebreaksbr }}</p>
+                <p> Tipo Evento: {{ evento.tipo_evento|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
