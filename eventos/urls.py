@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
         url(r'^$', views.lista_eventos),
+        url(r'^evento/(?P<pk>[0-9]+)/$', views.detalle_evento, name='detalle_evento'),
     ]

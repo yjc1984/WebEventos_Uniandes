@@ -1,23 +1,14 @@
-<html>
-    <head>
-        <title>Página de gestión de eventos</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Eventos</a></h1>
-        </div>
+{% extends 'eventos/base.html' %}
 
-        {% for evento in eventos %}
-            <div>
-                <p> Fecha de creación: {{ evento.fecha_creacion }}</p>
-                <h1><a href="">{{ evento.nombre }}</a></h1>
-                <p> Categoría: {{ evento.categoria|linebreaksbr }}</p>
-                <p> Lugar: {{ evento.lugar|linebreaksbr }}</p>
-                <p> Dirección: {{ evento.direccion|linebreaksbr }}</p>
-                <p> Fecha Inicio: {{ evento.fecha_inicio|linebreaksbr }}</p>
-                <p> Fecha Fin: {{ evento.fecha_fin|linebreaksbr }}</p>
-                <p> Tipo Evento: {{ evento.tipo_evento|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+{% block content %}
+
+  {% for evento in eventos %}
+    <div class="evento">
+      <div class="fecha_creacion">
+          Fecha de creación: {{ evento.fecha_creacion }}
+      </div>
+      <h1><a href="{% url 'detalle_evento' pk=evento.pk %}">{{ evento.nombre }}</a></h1>
+    </div>
+  {% endfor %}
+
+{% endblock %}
