@@ -2,6 +2,8 @@
 
 {% block content %}
     <div class="evento">
+      <a class="btn btn-default" href="{% url 'editar_evento' pk=evento.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+
         <h1>{{ evento.nombre}}</h1>
         <p> Fecha de creación: {{ evento.fecha_creacion }}</p>
         <p> Categoría: {{ evento.categoria|linebreaksbr }}</p>

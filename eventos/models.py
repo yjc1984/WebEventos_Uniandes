@@ -17,10 +17,10 @@ class Evento(models.Model):
 
     # Diferentes Categorias
 
-    CONFERENCIA = 'CF'
-    SEMINARIO = 'SM'
-    CONGRESO = 'CN'
-    CURSO = 'CR'
+    CONFERENCIA = 'Conferencia'
+    SEMINARIO = 'Seminario'
+    CONGRESO = 'Congreso'
+    CURSO = 'Curso'
 
     CATEGORIAS = (
         (CONFERENCIA, 'Conferencia'),
@@ -28,20 +28,20 @@ class Evento(models.Model):
         (CONGRESO, 'Congreso'),
         (CURSO, 'Curso'),
     )
-    categoria = models.CharField(max_length=2,
+    categoria = models.CharField(max_length=15,
                                 choices=CATEGORIAS,
                                 default=CONFERENCIA)
 
     # Tipos de Evento
 
-    PRESENCIAL = 'PR'
-    VIRTUAL = 'VR'
+    PRESENCIAL = 'Presencial'
+    VIRTUAL = 'Virtual'
 
     TIPO_EVENTO = (
         (PRESENCIAL, 'Presencial'),
         (VIRTUAL, 'Virtual'),
     )
-    tipo_evento = models.CharField(max_length=2,
+    tipo_evento = models.CharField(max_length=15,
                                 choices=TIPO_EVENTO,
                                 default=PRESENCIAL)
 
