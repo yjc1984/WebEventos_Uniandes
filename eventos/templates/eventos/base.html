@@ -15,11 +15,12 @@
             <p class="top-menu">Hola {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
         {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+            <a href="{% url 'signup' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         {% endif %}
 
          <h1><a href="/">Eventos</a></h1>
      </div>
-     
+
       <div class="content container">
           <div class="row">
               <div class="col-md-8">

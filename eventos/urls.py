@@ -10,4 +10,5 @@ urlpatterns = [
         url(r'^evento/nuevo/$', views.evento_nuevo, name='evento_nuevo'),
         url(r'^evento/(?P<pk>[0-9]+)/editar/$', views.editar_evento, name='editar_evento'),
         url(r'^evento/(?P<pk>\d+)/eliminar/$', views.eliminar_evento, name='eliminar_evento'),
+        url(r'^signup/$', views.signup, name='signup'),
     ]

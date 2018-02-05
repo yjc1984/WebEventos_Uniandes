@@ -1,8 +1,14 @@
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import FormularioEvento
-from django.shortcuts import redirect
+#from .forms import FormularioNuevoUsuario
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
+
 # Se importa el modelo Evento
 from .models import Evento
 
@@ -10,7 +16,7 @@ from .models import Evento
 @login_required
 def lista_eventos(request):
     # Consulta los eventos ordenados por fecha de creación
-    eventos = Evento.objects.filter(fecha_creacion__lte=timezone.now()).order_by('fecha_creacion')
+    eventos = Evento.objects.filter(autor_id=request.user).order_by('fecha_creacion')
     return render(request, 'eventos/lista_eventos.html', {'eventos':eventos})
 
 @login_required
@@ -50,4 +56,19 @@ def editar_evento(request, pk):
 def eliminar_evento(request, pk):
     evento = get_object_or_404(Evento, pk=pk)
     evento.delete()
-    return redirect('lista_eventos')
+    #return redirect('lista_eventos',pk=pk)
+    return render(request, 'eventos/lista_eventos.html',  {'evento': evento})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('lista_eventos')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
